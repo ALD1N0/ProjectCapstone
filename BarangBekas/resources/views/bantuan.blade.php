@@ -1,25 +1,6 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bantuan - Jual Beli Barang Second</title>
-    <link rel="stylesheet" href="{{asset("assets/css/style.css")}}"> <!-- pastikan ini mengarah ke CSS kamu -->
-</head>
-<body>
+@extends('mainlayoutb')
 
-<aside class="sidebar">
-    <h1>Sen's Market</h1>
-    <nav>
-    <a href="{{ route('dashboard') }}" >🏠 Dashboard</a>
-      <a href="{{route("profil")}}">👤 Profil</a>
-      <a href="{{route("produk")}}" >💼 Produk</a>
-      <a href="{{route("tersimpan")}}">🔖 Tersimpan</a>
-      <a href="{{route("jualproduk")}}">✏️ Jual Produk</a>
-      <a href="{{route("pengaturan")}}">⚙️ Pengaturan</a>
-      <a href="{{route("bantuan")}}" class="active">🎤 Bantuan</a>
-    </nav>
-  </aside>
+@section('maincontent')
 
     <div class="main-content">
         <div class="sticky-top">
@@ -73,3 +54,5 @@
 
 </body>
 </html>
+
+@endsection
