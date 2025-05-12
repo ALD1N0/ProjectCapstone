@@ -5,9 +5,11 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\HasilCariController;
 use App\Http\Controllers\JualProductController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PengaturanController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TersimpanController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('dasboard');
+    return view('pages.dasboard');
 });
 // Route untuk halaman Sen's Market
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -31,10 +33,14 @@ Route::get('/hasilcari', [HasilCariController::class, 'index']);
 Route::get('/profil', [ProfilController::class, 'index'])->name("profil");
 Route::get('/produk', [ProductController::class, 'index'])->name("produk");
 Route::get('/tersimpan', [TersimpanController::class, 'index'])->name("tersimpan");
-Route::get('/jual', [JualProductController::class, 'index'])->name("jualproduk");
+Route::get('/jual', [JualProductController::class, 'index'])->name("jual");
 Route::get('/pengaturan', [PengaturanController::class, 'index'])->name("pengaturan");
 Route::get('/bantuan', [BantuanController::class, 'index'])->name("bantuan");
 Route::get('/edit', [EditController::class, 'index'])->name("edit");
+
+Route::get('/login', [LoginController::class, 'index'])->name("tampilanlogin");
+Route::get('/register', [RegisterController::class, 'index'])->name("tampilanregister");
+
 
 Route::get('/detail', function () {
     return view('pages.detail');

@@ -14,7 +14,7 @@ class JualProductController extends Controller
     public function index()
     {
         //
-        return view("jual");
+        return view("pages.jual");
     }
 
     /**

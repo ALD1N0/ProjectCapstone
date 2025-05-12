@@ -14,7 +14,7 @@ class TersimpanController extends Controller
     public function index()
     {
         //
-        return view("simpan");
+        return view("pages.simpan");
     }
 
 

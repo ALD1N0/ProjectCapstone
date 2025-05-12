@@ -13,15 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id('id');
-            $table->string('nama', 255);
-            $table->string('email', 255)->unique();
+            Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('alamat')->nullable();
+            $table->string('username')->unique();
+            $table->string('telepon')->nullable();
             $table->string('password');
-            $table->enum('role', ['pembeli', 'penjual', 'admin'])->default('pembeli');
+            $table->string('profile_picture')->nullable();
             $table->timestamps();
-            $table->softDeletes(); // untuk soft delete
-        });
+});
     }
 
     /**

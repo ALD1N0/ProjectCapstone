@@ -14,7 +14,7 @@ class HasilCariController extends Controller
     public function index()
     {
         //
-        return view("hasilcari");
+        return view("pages.hasilcari");
     }
 
     /**

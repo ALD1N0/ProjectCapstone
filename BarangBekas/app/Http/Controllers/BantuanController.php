@@ -14,7 +14,7 @@ class BantuanController extends Controller
     public function index()
     {
         //
-        return view("bantuan");
+        return view("pages.bantuan");
     }
 
     /**
