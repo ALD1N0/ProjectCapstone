@@ -1,7 +1,24 @@
-@extends('mainlayoutb')
-
-@section('maincontent')
-
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sen's Market</title>
+  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+</head>
+<body>
+  <aside class="sidebar">
+    <h1>Sen's Market</h1>
+    <nav>
+      <a href="{{ route('dashboard') }}" >🏠 Dashboard</a>
+      <a href="{{route("profil")}}">👤 Profil</a>
+      <a href="{{route("produk")}}" >💼 Produk</a>
+      <a href="{{route("tersimpan")}}">🔖 Tersimpan</a>
+      <a href="{{route("jualproduk")}}">✏️ Jual Produk</a>
+      <a href="{{route("pengaturan")}}">⚙️ Pengaturan</a>
+      <a href="{{route("bantuan")}}" class="active">🎤 Bantuan</a>
+    </nav>
+  </aside>
     <div class="main-content">
         <div class="sticky-top">
             <h2>Bantuan</h2>
@@ -55,4 +72,3 @@
 </body>
 </html>
 
-@endsection
