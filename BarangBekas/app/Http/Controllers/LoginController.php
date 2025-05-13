@@ -30,28 +30,32 @@ public function showRegisterForm()
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'username' => 'required|string|max:255|unique:users,username',
-            'alamat' => 'required|string',
-            'telepon' => 'required|string',
-            'password' => 'required|string|min:8',
-            'foto' => 'nullable|image|max:2048',
+            'email' => 'required|string|email|max:255|unique:users',
+            'username' => 'required|string|max:255|unique:users',
+            'password' => 'required|string|min:4',
+            'alamat' => 'nullable|string|max:500',
+            'telepon' => 'nullable|numeric|digits_between:8,15',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Handle foto upload
+        $fotoPath = null;
         if ($request->hasFile('foto')) {
-            $validated['foto'] = $request->file('foto')->store('foto', 'public');
+            $fotoPath = $request->file('foto')->store('public/foto_user');
         }
 
-        // Hash password
-        $validated['password'] = Hash::make($validated['password']);
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'username' => $request->username,
+            'alamat' => $request->alamat,
+            'telepon' => $request->telepon,
+            'foto' => $fotoPath ? str_replace('public/', 'storage/', $fotoPath) : null,
+            'password' => Hash::make($request->password),
+        ]);
 
-        // Create user
-        User::create($validated);
-
-        return redirect()->route('login')->with('success', 'Account created successfully. Please login.');
+        return redirect()->route('login')->with('success', 'User berhasil ditambahkan.');
     }
 
     /**
