@@ -61,20 +61,20 @@ public function showRegisterForm()
     /**
      * Handle user login.
      */
-    public function login(Request $request)
-    {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|string',
-        ]);
+        public function login(Request $request)
+        {
+            $credentials = $request->validate([
+                'email' => 'required|email',
+                'password' => 'required|string',
+            ]);
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->route('dashboard')->with('success', 'Welcome back!');
+            if (Auth::attempt($credentials)) {
+                $request->session()->regenerate();
+                return redirect()->route('dashboard')->with('success', 'Welcome back!');
+            }
+
+            return back()->withErrors(['loginError' => 'Email atau password salah.'])->withInput();
         }
-
-        return back()->withErrors(['loginError' => 'Email atau password salah.'])->withInput();
-    }
 
     /**
      * Handle user logout.
