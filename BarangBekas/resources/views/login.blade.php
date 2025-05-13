@@ -10,56 +10,20 @@
 <body>
 
 <div class="container" id="container">
-    <div class="form-container sign-up">
-        <form method="" action="">
-            <h1>Create Account</h1>
-            <div class="social-icons">
-                <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
-            </div>
-            <span>or use your email for registration</span>
-            <input type="text" name="name" placeholder="Name" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit" name="register">Sign Up</button>
-        </form>
-    </div>
-
     <div class="form-container sign-in">
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-            <h1>Sign In Barang Second</h1>
-            <div class="social-icons">
-                <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
-            </div>
-            <span>or use your email and password</span>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <a href="#">Forget Your Password?</a>
-            <button type="submit" name="login">Sign In</button>
-        </form>
-    </div>
-
-    <div class="toggle-container">
-        <div class="toggle">
-            <div class="toggle-panel toggle-left">
-                <h1>Welcome Back!</h1>
-                <p>Nik wis gae akun gek ndang login bolo</p>
-                <button class="hidden" id="login">Sign In</button>
-            </div>
-            <div class="toggle-panel toggle-right">
-                <h1>Hello, Bossku!</h1>
-                <p>Ojo Lali Register yha bolo nik ga ndue akun</p>
-                <button class="hidden" id="register">Sign Up</button>
-            </div>
-        </div>
-    </div>
+    <form method="POST" action="{{ route('masuk') }}">
+        @csrf
+        <h1>Sign In Barang Second</h1>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        
+        <button type="submit">Sign In</button>
+    </form>
 </div>
-
-<script src="{{asset("js/script.js")}}"></script>
+            <div class="toggle-panel toggle-right">
+               <a href="{{route("register")}}"> <button class="hidden" id="register" src="{{route("register")}}">Sign Up</button></a>
+            </div>
+       <a href="#">Forget Your Password?</a>
+</div>
 </body>
 </html>

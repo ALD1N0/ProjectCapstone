@@ -39,7 +39,7 @@ session_start();
         <div class="dropdown">
           <div id="profileIcon">👤 ▼</div>
           <div class="dropdown-content" id="dropdownMenu">
-            <a href="{{route("tampilanlogin")}}">Login</a>
+            <a href="{{route("login")}}">Login</a>
           </div>
         </div>
       </div>

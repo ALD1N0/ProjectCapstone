@@ -8,7 +8,7 @@
       <form class="edit-profile-form">
         <div class="form-group">
           <label for="nama">Nama Lengkap</label>
-          <input type="text" id="nama" placeholder="Masukkan nama lengkap">
+          <input type="text" id="name" placeholder="Masukkan nama lengkap">
         </div>
 
         <div class="form-group">
@@ -20,7 +20,14 @@
           <label for="username">Username</label>
           <input type="text" id="username" placeholder="Masukkan username">
         </div>
-
+        <div class="form-group">
+            <label for="nama">Alamat</label>
+            <input type="text" id="alamat" placeholder="Masukkan Alamat">
+        </div>
+         <div class="form-group">
+          <label for="telepon">Telepon</label>
+          <input type="number" id="number" placeholder="Masukkan No Telepon">
+        </div>
         <div class="form-group">
           <label for="foto">Foto Profil</label>
           <input type="file" id="foto">

@@ -2,84 +2,84 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class LoginController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Display the login and register form.
      */
     public function index()
     {
-        //
         return view("login");
     }
+// app/Http/Controllers/LoginController.php
+
+public function showRegisterForm()
+{
+    return view('register'); // Buat file view register.blade.php
+}
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Store a newly created user (register).
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'username' => 'required|string|max:255|unique:users,username',
+            'alamat' => 'required|string',
+            'telepon' => 'required|string',
+            'password' => 'required|string|min:8',
+            'foto' => 'nullable|image|max:2048',
+        ]);
+
+        // Handle foto upload
+        if ($request->hasFile('foto')) {
+            $validated['foto'] = $request->file('foto')->store('foto', 'public');
+        }
+
+        // Hash password
+        $validated['password'] = Hash::make($validated['password']);
+
+        // Create user
+        User::create($validated);
+
+        return redirect()->route('login')->with('success', 'Account created successfully. Please login.');
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Handle user login.
      */
-    public function show($id)
+    public function login(Request $request)
     {
-        //
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('dashboard')->with('success', 'Welcome back!');
+        }
+
+        return back()->withErrors(['loginError' => 'Email atau password salah.'])->withInput();
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Handle user logout.
      */
-    public function edit($id)
+    public function logout(Request $request)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login')->with('success', 'You have been logged out.');
     }
 }

@@ -12,10 +12,13 @@ class User extends Authenticatable
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'nama',
-        'email',
-        'password',
-        'role',
+    'name',
+    'email',
+    'username',
+    'alamat',
+    'telepon',
+    'password',
+    'foto',
     ];
 
     protected $hidden = [
