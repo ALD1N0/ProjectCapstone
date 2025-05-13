@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ProfilController extends Controller
 {
@@ -14,7 +16,14 @@ class ProfilController extends Controller
     public function index()
     {
         //
-        return view("pages.profil");
+          $user = Auth::user(); // Mengambil user yang sedang login
+
+        if (!$user) {
+            abort(403, 'Anda belum login');
+        }
+        // dd(Auth::user());
+        return view('pages.profil')->with('user', $user);
+       
     }
 
     /**

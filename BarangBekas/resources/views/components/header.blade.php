@@ -8,6 +8,7 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sen's Market</title>
   <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
+
 </head>
 <body>
 
@@ -36,10 +37,14 @@ session_start();
         <div>📍 Boyolali</div>
         <div>✉️</div>
         <div>🔔</div>
-        <div class="dropdown">
+
+       <div class="dropdown">
           <div id="profileIcon">👤 ▼</div>
           <div class="dropdown-content" id="dropdownMenu">
-            <a href="{{route("login")}}">Login</a>
+            <form action="{{ route('logout') }}" method="POST">
+              @csrf
+              <button type="submit">Logout</button>
+            </form>
           </div>
         </div>
       </div>

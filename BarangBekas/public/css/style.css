@@ -664,3 +664,62 @@ tr:hover {
     align-items: center;
     justify-content: center;
 }
+/* Style untuk Dropdown Logout */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background: #ffffff;
+    border: 1px solid #00f9d4;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 160px;
+    z-index: 1001;
+    overflow: hidden;
+    transition: opacity 0.3s, transform 0.3s;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown-content form {
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-content button {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    text-align: left;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.dropdown-content button:hover {
+    background:  #a073e3; /* Background hover solid */
+    color: var(--primary-color);
+}
+
+/* Warna utama dan aksen */
+:root {
+    --primary-color: #000000; /* Warna utama teks */
+    --primary-gradient: linear-gradient(45deg, #d36811, #3111fd); /* Gradien utama */
+    --hover-color: #d36811;
+}
+

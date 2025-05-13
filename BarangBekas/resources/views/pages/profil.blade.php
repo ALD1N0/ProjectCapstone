@@ -4,9 +4,9 @@
 
 <div class="main-content">
     <div class="profile-header">
-        <img src="{{asset("foto/helm.jpeg")}}" alt="Avatar" class="avatar-large">
+        <img src="{{asset($user->foto)}}" alt="Avatar" class="avatar-large">
         <div class="details">
-            <h2>Gemilang Abadi</h2>
+            <h2>{{$user->username}}</h2>
             <div>Rating Toko: <span class="rating">⭐⭐⭐⭐☆ (4)</span></div>
             <a href="#" style="color: var(--primary-color); font-weight: bold; text-decoration: none; margin-top: 5px;">Lihat Ulasan</a>
         </div>
