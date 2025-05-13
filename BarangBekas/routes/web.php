@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BantuanController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DetailController;
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\HasilCariController;
 use App\Http\Controllers\JualProductController;
@@ -34,6 +35,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/pengaturan', [PengaturanController::class, 'index'])->name("pengaturan");
     Route::get('/bantuan', [BantuanController::class, 'index'])->name("bantuan");
     Route::get('/edit', [EditController::class, 'index'])->name("edit");
+    Route::get('/detail', [DetailController::class, 'index'])->name("detail");
 
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
