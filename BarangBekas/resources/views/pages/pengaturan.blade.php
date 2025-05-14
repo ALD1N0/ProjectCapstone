@@ -12,7 +12,7 @@
   </div>
 
   <ul class="account-menu">
-    <li><a href="#"><span class="icon">👤</span> Profil</a></li>
+    <li><a href="{{route("profil")}}"><span class="icon">👤</span> Profil</a></li>
     <li><a href="#"><span class="icon">🏦</span> Bank & Kartu</a></li>
     <li><a href="#"><span class="icon">🏠</span> Alamat</a></li>
     <li><a href="#"><span class="icon">🔒</span> Ubah Password</a></li>

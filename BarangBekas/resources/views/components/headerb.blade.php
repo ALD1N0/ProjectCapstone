@@ -18,7 +18,7 @@ session_start();
         <a href="{{ route('profil') }}" class="{{ request()->routeIs('profil') ? 'active' : '' }}">👤 Profil</a>
         <a href="{{ route('produk') }}" class="{{ request()->routeIs('produk') ? 'active' : '' }}">💼 Produk</a>
         <a href="{{ route('tersimpan') }}" class="{{ request()->routeIs('tersimpan') ? 'active' : '' }}">🔖 Tersimpan</a>
-        <a href="{{ route('jual') }}" class="{{ request()->routeIs('jual') ? 'active' : '' }}">✏️ Jual Produk</a>
+        <a href="{{ route('jual.index') }}" class="{{ request()->routeIs('jual.index') ? 'active' : '' }}">✏️ Jual Produk</a>
         <a href="{{ route('pengaturan') }}" class="{{ request()->routeIs('pengaturan') ? 'active' : '' }}">⚙️ Pengaturan</a>
         <a href="{{ route('bantuan') }}" class="{{ request()->routeIs('bantuan') ? 'active' : '' }}">🎤 Bantuan</a>
     </nav>

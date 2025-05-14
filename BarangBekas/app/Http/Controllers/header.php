@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class BantuanController extends Controller
+class header extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +16,13 @@ class BantuanController extends Controller
     public function index()
     {
         //
-       $user = Auth::user(); // Mengambil user yang sedang login
+         $user = Auth::user(); // Mengambil user yang sedang login
 
         if (!$user) {
             abort(403, 'Anda belum login');
         }
         // dd(Auth::user());
-        return view('pages.bantuan')->with('user', $user);
+        return view('components.header')->with('user', $user);
     }
 
     /**
