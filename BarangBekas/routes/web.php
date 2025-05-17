@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/jual/{product}', [JualProductController::class, 'update'])->name('jual.update');
     Route::delete('/jual/{product}', [JualProductController::class, 'destroy'])->name('jual.destroy');
 
+
     // Logout
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });

@@ -18,11 +18,14 @@ class ProfilController extends Controller
         //
           $user = Auth::user(); // Mengambil user yang sedang login
 
-        if (!$user) {
-            abort(403, 'Anda belum login');
-        }
-        // dd(Auth::user());
-        return view('pages.profil')->with('user', $user);
+    if (!$user) {
+        abort(403, 'Anda belum login');
+    }
+
+    // Mengambil produk milik user yang sedang login
+    $products = $user->products; // Memanfaatkan relasi hasMany
+
+    return view('pages.profil', compact('user', 'products'));
        
     }
 

@@ -14,24 +14,14 @@
 
     <h3 style="margin-top: 30px;">Produk Dijual</h3>
     <div class="products">
-        <div class="product-card">
-            <img src="{{asset("foto/helm.jpeg")}}" alt="Produk">
-            <div class="name">Jual Helm KYT</div>
-            <div class="price">Rp. 500</div>
-            <div class="location">Teras</div>
+        @foreach ($products as $p)
+             <div class="product-card">
+            <img src="{{asset($p->image_url)}}" alt="Produk">
+            <div class="name">Jual {{$p->nama_product}}</div>
+            <div class="price">Rp.{{$p->harga}}</div>
+            <div class="location">{{$p->user->alamat}}</div>
         </div>
-        <div class="product-card">
-            <img src="{{asset("foto/jacket.jpg")}}" alt="Produk">
-            <div class="name">Jual Jaket Touring</div>
-            <div class="price">Rp. 350</div>
-            <div class="location">Boyolali</div>
-        </div>
-        <div class="product-card">
-            <img src="{{asset("foto/stgn.jpg")}}" alt="Produk">
-            <div class="name">Jual Sarung Tangan</div>
-            <div class="price">Rp. 150</div>
-            <div class="location">Solo</div>
-        </div>
+        @endforeach
     </div>
 
     <div class="section">

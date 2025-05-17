@@ -15,7 +15,9 @@ class ProductController extends Controller
     public function index()
     {
         //
-        return view("pages.hasilcari");
+          $products = Product::with('user')->get();
+    // dd($products); // Untuk memastikan data produk muncul
+    return view('pages.hasilcari', compact('products'));
     }
 
     /**

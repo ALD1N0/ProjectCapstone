@@ -6,36 +6,14 @@
     <div style="padding: 20px;"></div>
 
     <div class="products">
-      <a href="{{ route('detail') }}" class="product-card">
-        <img src="{{asset("foto/helm.jpeg")}}" alt="">
-        <div class="name">Jual Helm KYT</div>
-        <div class="price">Rp.500</div>
-        <div class="location">Teras</div>
+        @foreach($products as $product)
+           <a href="{{ route('detail') }}" class="product-card">
+        <img src="{{asset($product->image_url)}}" alt="">
+        <div class="name">{{$product->nama_product}}</div>
+        <div class="price">Rp. {{$product->harga}}</div>
+        <div class="location">{{$product->user->alamat}}</div>
       </a>
-      <a href="{{ route('detail') }}" class="product-card">
-        <img src="{{asset("foto/trees.png")}}" alt="">
-        <div class="name">Little Trees</div>
-        <div class="price">Rp.700</div>
-        <div class="location">Gentan</div>
-      </a>
-      <a href="{{ route('detail') }}" class="product-card">
-        <img src="{{asset("foto/adibas.jpg")}}" alt="">
-        <div class="name">Sepatu Adibas</div>
-        <div class="price">Rp.700</div>
-        <div class="location">Kertonatan</div>
-      </a>
-      <a href="{{ route('detail') }}" class="product-card">
-        <img src="{{asset("foto/tiger.jpg")}}" alt="">
-        <div class="name">Spakbor Tiger Herek</div>
-        <div class="price">Rp.500</div>
-        <div class="location">Randusari</div>
-      </a>
-      <a href="{{ route('detail') }}" class="product-card">
-        <img src="{{asset("foto/fiber.jpg")}}" alt="">
-        <div class="name">Microfiber</div>
-        <div class="price">Rp.500</div>
-        <div class="location">Teras</div>
-      </a>
+        @endforeach
       </div>
   </main>
   
