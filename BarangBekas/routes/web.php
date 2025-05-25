@@ -28,8 +28,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tersimpan', [TersimpanController::class, 'index'])->name("tersimpan");
     Route::get('/pengaturan', [PengaturanController::class, 'index'])->name("pengaturan");
     Route::get('/bantuan', [BantuanController::class, 'index'])->name("bantuan");
+    Route::get('/detail/{id}', [DetailController::class, 'show'])->name('detail.show');
     Route::get('/detail', [DetailController::class, 'index'])->name("detail");
     Route::get('/edit', [EditController::class, 'index'])->name("edit");
+    Route::get('/search', [ProductController::class, 'search'])->name('product.search');
+    Route::post('/products/{product}/save', [ProductController::class, 'save'])->name('products.save');
 
     // Edit dan update profil pengguna
     Route::get('/user/{user}/edit', [PengaturanController::class, 'edit'])->name('user.edit');

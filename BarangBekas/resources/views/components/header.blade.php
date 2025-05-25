@@ -16,7 +16,6 @@ session_start();
     <h1>Sen's Market</h1>
     <nav>
         <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">🏠 Dashboard</a>
-        <a href="{{ route('profil') }}" class="{{ request()->routeIs('profil') ? 'active' : '' }}">👤 Profil</a>
         <a href="{{ route('produk') }}" class="{{ request()->routeIs('produk') ? 'active' : '' }}">💼 Produk</a>
         <a href="{{ route('tersimpan') }}" class="{{ request()->routeIs('tersimpan') ? 'active' : '' }}">🔖 Tersimpan</a>
         <a href="{{ route('jual.index') }}" class="{{ request()->routeIs('jual.index') ? 'active' : '' }}">✏️ Jual Produk</a>
@@ -31,7 +30,6 @@ session_start();
     <div class="sticky-top">
       <div class="search">
         <button style="background: none; border: none; font-size: 20px; cursor: pointer;">☰</button>
-        <input type="text" placeholder="Cari Barang Anda">
       </div>
       <div class="icons">
         <div style="font-weight: bold;">📍 {{$user?$user->alamat:"radue omah"}}</div>

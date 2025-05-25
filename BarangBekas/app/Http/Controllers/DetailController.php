@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class DetailController extends Controller
 {
@@ -46,9 +47,11 @@ class DetailController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        // Ambil data produk beserta relasi user-nya
+        $product = Product::with('user')->findOrFail($id);
 
+        return view("pages.detail", compact('product'));
+    }
     /**
      * Show the form for editing the specified resource.
      *

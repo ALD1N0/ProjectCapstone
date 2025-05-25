@@ -85,4 +85,17 @@ class ProductController extends Controller
     {
         //
     }
+
+    public function search(Request $request)
+    {
+    $query = $request->input('query');
+    
+    $products = Product::where('nama_product', 'like', "%$query%")
+                ->orWhere('deskripsi', 'like', "%$query%")
+                ->get();
+    
+    return view('pages.hasilcari', compact('products'));
+    }
+
+    
 }
