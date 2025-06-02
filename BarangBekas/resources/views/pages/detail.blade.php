@@ -73,7 +73,8 @@
 <div class="detail-container">
     <div class="left">
         <div class="image-preview">
-            <img src="{{ asset($product->image_url) }}" alt="{{ $product->nama_product }}">
+            <img src="{{ asset($product->image_url ?: 'assets/foto/images.png') }}" alt="{{ $product->nama_product }}">
+
         </div>
         <div class="action-buttons">
             <button class="btn-standard">Simpan</button>

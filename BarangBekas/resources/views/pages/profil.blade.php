@@ -4,7 +4,7 @@
 
 <div class="main-content">
     <div class="profile-header">
-        <img src="{{asset($user->foto)}}" alt="Avatar" class="avatar-large">
+       <img src="{{ asset($user->foto && $user->foto !== '' ? $user->foto : 'assets/foto/images.png') }}" alt="Avatar" class="avatar-large">
         <div class="details">
             <h2>{{$user->username}}</h2>
             <div>Rating Toko: <span class="rating">⭐⭐⭐⭐☆ (4)</span></div>
@@ -16,7 +16,7 @@
     <div class="products">
         @foreach ($products as $p)
              <div class="product-card">
-            <img src="{{asset($p->image_url)}}" alt="Produk">
+            <img src="{{ asset($p->image_url ?: 'assets/foto/images.png') }}" alt="Produk">
             <div class="name">Jual {{$p->nama_product}}</div>
             <div class="price">Rp.{{$p->harga}}</div>
             <div class="location">{{$p->user->alamat}}</div>

@@ -17,10 +17,11 @@
         <a href="{{ route('detail.show', $product->id) }}" class="product-card-link">
             <div class="product-card">
                 <div class="product-image">
-                    <img src="{{ asset($product->image_url) }}" alt="{{ $product->nama_product }}">
+                   <img src="{{ asset($product->image_url ?? 'assets/foto/images.png') }}" alt="{{ $product->nama_product }}">
+
                 </div>
                 <div class="product-details">
-                    <h3 class="product-name">{{ $product->nama_product }}</h3>
+                    <div class="product-name">{{ $product->nama_product }}</div>
                     <div class="product-price">Rp. {{ number_format($product->harga, 0, ',', '.') }}</div>
                     <div class="product-location">{{ $product->user->alamat }}</div>
                 </div>
@@ -156,12 +157,13 @@
 
     .product-details {
         padding: 12px;
+        text-shadow: #ffffff;
     }
 
     .product-name {
         font-size: 14px;
         margin: 0 0 8px 0;
-        color: #333;
+        color: #ffffff;
         font-weight: normal;
         line-height: 1.4;
         height: 40px;
