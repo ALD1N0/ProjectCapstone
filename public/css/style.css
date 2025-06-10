@@ -1,51 +1,11 @@
-/* Dropdown tambahan sesuai style utama */
-.dropdown {
-    position: relative;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 40px;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    min-width: 140px;
-    z-index: 1001;
-    overflow: hidden;
-}
-
-.dropdown-content a {
-    display: block;
-    padding: 10px 15px;
-    color: #333;
-    text-decoration: none;
-    transition: background 0.3s;
-}
-
-.dropdown-content a:hover {
-    background: var(--primary-gradient);
-    color: white;
-}
-
-#profileIcon {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-weight: bold;
-    color: var(--primary-color);
-}
-
 /* Warna utama dan aksen */
 :root {
-  --primary-color: #190980;
+  --primary-color: #777778;
   --primary-gradient: linear-gradient(45deg, #d36811, #3111fd);
   --hover-color: #cf6e4d;
 }
 
+/* Body wrapper flex */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -55,15 +15,20 @@ body {
 /* Sidebar */
 .sidebar {
   position: fixed;
-  left: 0;
   top: 0;
+  left: 0;
   width: 240px;
   height: 100vh;
   background: var(--primary-gradient);
-  border-right: 1px solid #ccc;
   padding: 20px;
   box-sizing: border-box;
   color: white;
+  transition: transform 0.3s ease;
+  z-index: 999;
+}
+
+.sidebar.hidden {
+  transform: translateX(-100%);
 }
 
 .sidebar h1 {
@@ -102,8 +67,14 @@ body {
 .main-content {
   margin-left: 240px;
   width: calc(100% - 240px);
+  transition: margin-left 0.3s ease, width 0.3s ease;
   padding: 0;
   box-sizing: border-box;
+}
+
+.sidebar.hidden ~ .main-content {
+  margin-left: 0;
+  width: 100%;
 }
 
 /* Topbar */
@@ -113,15 +84,22 @@ body {
   left: 240px;
   width: calc(100% - 240px);
   background: white;
-  z-index: 1000;
+  z-index: 998;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid var(--primary-color);
   box-sizing: border-box;
+  transition: left 0.3s ease, width 0.3s ease;
 }
 
+.sidebar.hidden ~ .main-content .sticky-top {
+  left: 0;
+  width: 100%;
+}
+
+/* Search bar */
 .search {
   display: flex;
   align-items: center;
@@ -135,10 +113,52 @@ body {
   border-radius: 5px;
 }
 
+/* Topbar icons */
 .icons {
   display: flex;
   gap: 20px;
   align-items: center;
+}
+
+/* Dropdown tambahan */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  min-width: 140px;
+  z-index: 1001;
+  overflow: hidden;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.dropdown-content a:hover {
+  background: var(--primary-gradient);
+  color: white;
+}
+
+#profileIcon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+  color: var(--primary-color);
 }
 
 /* Carousel */
@@ -155,11 +175,7 @@ body {
   border-radius: 10px;
 }
 
-h2 {
-  margin: 20px;
-}
-
-/* Produk grid */
+/* Produk Grid */
 .products,
 .product-grid {
   display: grid;
@@ -191,6 +207,12 @@ h2 {
   border-radius: 5px;
   background: #f0f0f0;
 }
+
+/* Headings */
+h2 {
+  margin: 20px;
+}
+
 
 .name {
   font-weight: bold;

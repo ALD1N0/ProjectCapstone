@@ -4,7 +4,7 @@
     <main class="main-content">
   <div class="account-card">
   <div class="profile-header">
-    <img src="{{ asset($user->foto) }}" alt="Avatar" class="avatar-large">
+<img src="{{ asset($user->foto ?: 'assets/foto/images.png') }}" alt="Avatar" class="avatar-large">
     <div>
       <h2 class="username">{{$user->name}}</h2>
       <a href="{{ route('user.edit', ['user' => $user->id]) }}" class="edit-profile">✏️ Ubah Profil</a>
@@ -14,8 +14,6 @@
   <ul class="account-menu">
     <li><a href="{{route("profil")}}"><span class="icon">👤</span> Profil</a></li>
     <li><a href="{{route("tersimpan")}}"><span class="icon">🔖</span> Tersimpan</a></li>
-    <li><a href="#"><span class="icon">🏠</span> Alamat</a></li>
-    <li><a href="#"><span class="icon">🔒</span> Ubah Password</a></li>
   </ul>
 </div>
 

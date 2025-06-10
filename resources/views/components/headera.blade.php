@@ -21,10 +21,13 @@ session_start();
 </aside>
 
 
-  <main class="main-content">
+<main class="main-content">
     <div class="sticky-top">
       <div class="search">
-        <button style="background: none; border: none; font-size: 20px; cursor: pointer;">☰</button>
+       <!-- Tombol Toggle di bagian header -->
+<button id="toggleSidebar" style="background:none;border:none;font-size:24px;cursor:pointer;">
+  ☰
+</button>
       </div>
       <div class="icons">
         <div>Admin</div>
@@ -36,3 +39,15 @@ session_start();
         </div>
       </div>
     </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const toggleBtn = document.getElementById('toggleSidebar');
+    const sidebar = document.querySelector('.sidebar');
+    const mainContent = document.querySelector('.main-content');
+
+    toggleBtn.addEventListener('click', function () {
+      sidebar.classList.toggle('hidden');
+      mainContent.classList.toggle('expanded');
+    });
+  });
+  </script>

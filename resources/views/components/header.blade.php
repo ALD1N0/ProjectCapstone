@@ -16,7 +16,6 @@ session_start();
     <h1>Sen's Market</h1>
     <nav>
         <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">🏠 Dashboard</a>
-        <a href="{{ route('produk') }}" class="{{ request()->routeIs('produk') ? 'active' : '' }}">💼 Produk</a>
         <a href="{{ route('tersimpan') }}" class="{{ request()->routeIs('tersimpan') ? 'active' : '' }}">🔖 Tersimpan</a>
         <a href="{{ route('jual.index') }}" class="{{ request()->routeIs('jual.index') ? 'active' : '' }}">✏️ Jual Produk</a>
         <a href="{{ route('pengaturan') }}" class="{{ request()->routeIs('pengaturan') ? 'active' : '' }}">⚙️ Pengaturan</a>
@@ -29,13 +28,13 @@ session_start();
   <main class="main-content">
     <div class="sticky-top">
       <div class="search">
-        <button style="background: none; border: none; font-size: 20px; cursor: pointer;">☰</button>
+       <!-- Tombol Toggle di bagian header -->
+<button id="toggleSidebar" style="background:none;border:none;font-size:24px;cursor:pointer;">
+  ☰
+</button>
+
       </div>
       <div class="icons">
-        <div style="font-weight: bold;">📍 {{$user?$user->alamat:"radue omah"}}</div>
-        <div>✉️</div>
-        <div>🔔</div>
-
        <div class="dropdown">
           <div id="profileIcon">👤 ▼</div>
           <div class="dropdown-content" id="dropdownMenu">
@@ -43,6 +42,37 @@ session_start();
               @csrf
               <button type="submit">Logout</button>
             </form>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+            const toggleBtn = document.getElementById('toggleSidebar');
+            const sidebar = document.querySelector('.sidebar');
+            const mainContent = document.querySelector('.main-content');
+            const profileIcon = document.getElementById('profileIcon');
+            const dropdownMenu = document.getElementById('dropdownMenu');
+
+            // Toggle Sidebar
+            toggleBtn.addEventListener('click', function () {
+                sidebar.classList.toggle('hidden');
+                mainContent.classList.toggle('expanded');
+            });
+
+            // Toggle Profile Dropdown
+            profileIcon.addEventListener('click', function (event) {
+                event.stopPropagation(); // Mencegah event click menyebar ke window untuk menutup dropdown
+                dropdownMenu.classList.toggle('show');
+            });
+
+            // Tutup dropdown jika user mengklik di luar ikon profil atau menu dropdown
+            window.addEventListener('click', function (event) {
+                if (!profileIcon.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                    if (dropdownMenu.classList.contains('show')) {
+                        dropdownMenu.classList.remove('show');
+                    }
+                }
+            });
+        });
+</script>
+
           </div>
         </div>
       </div>

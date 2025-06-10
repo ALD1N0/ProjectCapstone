@@ -12,7 +12,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\TersimpanController;
 use App\Http\Controllers\BarangController;
-use App\Http\Controllers\ServerManageController;
+// use App\Http\Controllers\ServerManageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -60,7 +60,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/jual/{product}', [JualProductController::class, 'destroy'])->name('jual.destroy');
 
     // Server management dan user management
-    Route::get('/servermanage', [ServerManageController::class, 'index'])->name('servermanage');
+    // Route::get('/servermanage', [ServerManageController::class, 'index'])->name('servermanage');
     Route::get('/user', [UserController::class, 'index'])->name('user');
     Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
     Route::get('/user/search', [UserController::class, 'search'])->name('user.search');
