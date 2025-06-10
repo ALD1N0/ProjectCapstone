@@ -249,7 +249,7 @@
     .product-card {
         border-radius: 8px;
         overflow: hidden;
-        background: white;
+        background: white; /* Bagian atas card (gambar) putih */
         box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         transition: transform 0.2s, box-shadow 0.2s;
     }
@@ -269,14 +269,14 @@
 
     .product-details {
         padding: 12px;
-        background-color: #333; 
-        color: #fff; 
+        background-color: #333; /* Latar belakang gelap untuk detail produk */
+        color: #fff; /* Teks putih untuk kontras umum */
     }
 
     .product-name {
         font-size: 14px;
         margin: 0 0 8px 0;
-        color: #fff; 
+        color: #fff; /* Warna teks nama produk putih */
         font-weight: normal;
         line-height: 1.4;
         height: 40px;
@@ -288,14 +288,14 @@
 
     .product-price {
         font-weight: bold;
-        color: #e74c3c;
+        color: #e74c3c; /* Warna teks harga merah/oranye */
         font-size: 16px;
         margin-bottom: 6px;
     }
 
     .product-location {
         font-size: 12px;
-        color: #ccc; 
+        color: #ccc; /* Warna teks lokasi putih/abu-abu terang */
     }
 </style>
 @endsection
